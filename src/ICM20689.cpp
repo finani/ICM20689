@@ -446,9 +446,45 @@ double ICM20689::getTemperature_C() {
   return _t;
 }
 
+/* returns the accelerometer measurement in the x direction, raw 16-bit integer */
+int16_t ICM20689::getAccelX_count()
+{
+    return _accCounts[0];
+}
+
+/* returns the accelerometer measurement in the y direction, raw 16-bit integer */
+int16_t ICM20689::getAccelY_count()
+{
+    return _accCounts[1];
+}
+
+/* returns the accelerometer measurement in the z direction, raw 16-bit integer */
+int16_t ICM20689::getAccelZ_count()
+{
+    return _accCounts[2];
+}
+
+/* returns the gyroscople measurement in the x direction, raw 16-bit integer */
+int16_t ICM20689::getGyroX_count()
+{
+    return _gyroCounts[0];
+}
+
+/* returns the gyroscople measurement in the y direction, raw 16-bit integer */
+int16_t ICM20689::getGyroY_count()
+{
+    return _gyroCounts[1];
+}
+
+/* returns the gyroscople measurement in the z direction, raw 16-bit integer */
+int16_t ICM20689::getGyroZ_count()
+{
+    return _gyroCounts[2];
+}
+
 /* configures and enables the FIFO buffer  */
 int ICM20689_FIFO::enableFifo(bool accel,bool gyro,bool temp) {
-  // use low speed SPI for register setting
+    // use low speed SPI for register setting
   _useSPIHS = false;
   if(writeRegister(FIFO_EN,(accel*FIFO_ACCEL)|(gyro*FIFO_GYRO)|(temp*FIFO_TEMP)) < 0) {
     return -2;

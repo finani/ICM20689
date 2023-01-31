@@ -1,5 +1,4 @@
 #include "ICM20689.h"
-// TODO: Need to test this with the ICM20689
 
 static const uint8_t MOSI_PIN = PA7;
 static const uint8_t MISO_PIN = PA6;
@@ -36,26 +35,25 @@ void setup() {
   // attaching the interrupt to microcontroller pin 1
   pinMode(1,INPUT);
   attachInterrupt(1,getIMU,RISING);
-  Serial.println("ax,ay,az,gx,gy,gz,temp_C");
 }
 
 void loop() {}
 
 void getIMU() {
+
   // read the sensor
   IMU.readSensor();
-  // display the data
-  Serial.print(IMU.getAccelX_mss(),6);
+  
+  // display the raw data
+  Serial.print(IMU.getAccelX_count());
   Serial.print("\t");
-  Serial.print(IMU.getAccelY_mss(),6);
+  Serial.print(IMU.getAccelY_count());
   Serial.print("\t");
-  Serial.print(IMU.getAccelZ_mss(),6);
+  Serial.print(IMU.getAccelZ_count());
   Serial.print("\t");
-  Serial.print(IMU.getGyroX_rads(),6);
+  Serial.print(IMU.getGyroX_count());
   Serial.print("\t");
-  Serial.print(IMU.getGyroY_rads(),6);
+  Serial.print(IMU.getGyroY_count());
   Serial.print("\t");
-  Serial.print(IMU.getGyroZ_rads(),6);
-  Serial.print("\t");
-  Serial.println(IMU.getTemperature_C(),6);
+  Serial.println(IMU.getGyroZ_count());
 }
