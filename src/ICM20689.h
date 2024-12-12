@@ -87,16 +87,16 @@ class ICM20689 {
 	// i2c
 	uint8_t        _address  = 0;
 	TwoWire*       _i2c      = {};
-	const uint32_t _i2cRate  = 400'000;  // 400 kHz
-	size_t         _numBytes = 0;        // number of bytes received from I2C
+	const uint32_t _i2cRate  = 400000;  // 400 kHz
+	size_t         _numBytes = 0;       // number of bytes received from I2C
 	// spi
 	SPIClass*      _spi         = {};
 	uint8_t        _csPin       = 0;
 	bool           _useSPI      = false;
 	bool           _useSPIHS    = false;
 	const uint8_t  SPI_READ     = 0x80;
-	const uint32_t SPI_LS_CLOCK = 1'000'000;  // 1 MHz
-	const uint32_t SPI_HS_CLOCK = 8'000'000;  // 8 MHz
+	const uint32_t SPI_LS_CLOCK = 1000000;  // 1 MHz
+	const uint32_t SPI_HS_CLOCK = 8000000;  // 8 MHz
 	// buffer for reading from sensor
 	uint8_t _buffer[15] = {};
 	// data counts
